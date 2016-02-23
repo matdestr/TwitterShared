@@ -11,6 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterUWP", "TwitterUWP\Tw
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		XamarinTestShared\XamarinTestShared\XamarinTestShared.projitems*{2a513254-18b1-406b-acd3-fe926fe50810}*SharedItemsImports = 4
 		XamarinTestShared\XamarinTestShared\XamarinTestShared.projitems*{065264ef-3b42-47a2-9a96-252060d1d014}*SharedItemsImports = 13
 		XamarinTestShared\XamarinTestShared\XamarinTestShared.projitems*{6ac5bebf-a17d-41bd-a4bb-e1de17e09641}*SharedItemsImports = 4
 	EndGlobalSection

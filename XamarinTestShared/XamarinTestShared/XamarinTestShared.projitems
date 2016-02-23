@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
@@ -9,6 +9,14 @@
     <Import_RootNamespace>XamarinTestShared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)MyClass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Authentication\AuthHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Authentication\IAuthHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestClass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Timeline\ITimelineHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Timeline\TimelineHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tweet\ITweetHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tweet\TweetHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)User\IUserHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)User\UserHelper.cs" />
   </ItemGroup>
 </Project>
