@@ -19,21 +19,22 @@
             </Grid.RowDefinitions>
             <AutoSuggestBox x:Name="AutoSuggestBox" Grid.Row="0" PlaceholderText="Search for users" QueryIcon="Find" HorizontalAlignment="Stretch" QuerySubmitted="AutoSuggestBox_QuerySubmitted"></AutoSuggestBox>
 
-            <ListView Grid.Row="1" Name="SearchUserResultTweets" Background="White" IsRightTapEnabled="True" IsItemClickEnabled="True" ItemClick="SearchUserResultTweets_OnItemClick" >
+            <ListView Grid.Row="1" Name="SearchUserResultTweets" Background="White" IsRightTapEnabled="True" IsItemClickEnabled="True" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid RightTapped="UIElement_OnRightTapped">
+                        <Grid Tapped="UIElement_OnTapped">
                             <FlyoutBase.AttachedFlyout>
                                 <MenuFlyout>
+                                    <MenuFlyoutItem x:Name="ProfileButton" Text="Profile" Click="ProfileButton_OnClickButton_OnClickButton_Click"/>
                                     <MenuFlyoutItem x:Name="FollowButton" Text="Follow" Click="FollowButton_OnClickButton_Click"/>
                                     <MenuFlyoutItem x:Name="BlockButton" Text="Block" Click="BlockButton_OnClickButton_Click"/>
                                 </MenuFlyout>
                             </FlyoutBase.AttachedFlyout>
                             <StackPanel Orientation="Horizontal" Height="100">
-                                <Image Source="{Binding ProfileImageUrl}" Height="73" Width="73" VerticalAlignment="Top" Margin="5,10,8,0"/>
+                                <Image Source="{Binding ProfileImageUrl}" Height="50" Width="50" VerticalAlignment="Top" Margin="5,10,8,0"/>
                                 <StackPanel Width="auto">
-                                    <TextBlock Text="{Binding Name}" Foreground="#222" FontSize="24" FontWeight="SemiBold" />
-                                    <TextBlock Text="{Binding ScreenName, Converter={StaticResource StringFormatConverter}}" Foreground="#555" TextWrapping="Wrap" FontSize="20" />
+                                    <TextBlock Text="{Binding Name}" Foreground="#222" FontSize="20" FontWeight="SemiBold" />
+                                    <TextBlock Text="{Binding ScreenName, Converter={StaticResource StringFormatConverter}}" Foreground="#555" TextWrapping="Wrap" FontSize="16" />
                                 </StackPanel>
                             </StackPanel>
                         </Grid>

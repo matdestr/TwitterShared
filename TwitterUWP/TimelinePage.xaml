@@ -9,23 +9,24 @@
     <Grid x:Name="TimelineGrid" Background="White">
         <Pivot>
             <PivotItem Header="Home Timeline">
-                <ListView Name="TimeLineTweets" Background="White" IsRightTapEnabled="True" IsItemClickEnabled="True" ItemClick="TimeLineTweets_OnItemClick_OnItemClick" >
+                <ListView Name="TimeLineTweets" Background="White" IsRightTapEnabled="True"  IsItemClickEnabled="true">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Grid RightTapped="UIElement_OnRightTapped">
+                            <Grid Tapped="Grid_Tapped" >
                                 <FlyoutBase.AttachedFlyout>
                                     <MenuFlyout>
                                         <MenuFlyoutItem x:Name="EditButton" Text="Retweet" Click="RetweetButton_Click"/>
                                         <MenuFlyoutItem x:Name="FavouriteButton" Text="Favourite" Click="FavouriteButton_Click"/>
                                         <MenuFlyoutItem x:Name="ReplyButton" Text="Reply" Click="ReplyButton_Click"/>
                                         <MenuFlyoutItem x:Name="DeleteButton" Text="Delete" Click="DeleteButton_Click"/>
+                                        <MenuFlyoutItem x:Name="ProfileButton" Text="Profile" Click="ProfileButton_Click"/>
                                     </MenuFlyout>
                                 </FlyoutBase.AttachedFlyout>
                                 <StackPanel Orientation="Horizontal" Height="Auto" Margin="0,0,0,20">
-                                    <Image Source="{Binding CreatedBy.ProfileImageUrl}" Height="73" Width="73" VerticalAlignment="Top" Margin="5,10,8,0"/>
+                                    <Image Source="{Binding CreatedBy.ProfileImageUrl}" Height="50" Width="50" VerticalAlignment="Top" Margin="5,10,8,0"/>
                                     <StackPanel Width="auto">
-                                        <TextBlock Text="{Binding CreatedBy.Name}" Foreground="#222" FontSize="24" FontWeight="SemiBold" />
-                                        <TextBlock Text="{Binding Text}" Foreground="#555" TextWrapping="Wrap" FontSize="20" />
+                                        <TextBlock Text="{Binding CreatedBy.Name}" Foreground="#222" FontSize="20" FontWeight="SemiBold" />
+                                        <TextBlock Text="{Binding Text}" Foreground="#555" TextWrapping="Wrap" FontSize="16" />
                                     </StackPanel>
                                 </StackPanel>
                             </Grid>

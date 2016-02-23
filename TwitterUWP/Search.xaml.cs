@@ -35,12 +35,7 @@ namespace TwitterUWP
             
         }
 
-        private void UIElement_OnRightTapped(object sender, RightTappedRoutedEventArgs e)
-        {
-            FrameworkElement senderElement = sender as FrameworkElement;
-            FlyoutBase flyoutBase = FlyoutBase.GetAttachedFlyout(senderElement);
-            flyoutBase.ShowAt(senderElement);
-        }
+        
 
         private async void RetweetButton_Click(object sender, RoutedEventArgs e)
         {
@@ -143,11 +138,33 @@ namespace TwitterUWP
             this.Frame.Navigate(typeof(SearchUser));
         }
 
-        private void SearchResultTweets_OnItemClick(object sender, ItemClickEventArgs e)
+
+        private void UIElement_OnTapped(object sender, TappedRoutedEventArgs e)
         {
-            ITweet tweetClicked = e.ClickedItem as ITweet;
-            IUser userClicked = tweetClicked?.CreatedBy;
-            this.Frame.Navigate(typeof(Profile), userClicked);
+            FrameworkElement senderElement = sender as FrameworkElement;
+            FlyoutBase flyoutBase = FlyoutBase.GetAttachedFlyout(senderElement);
+            flyoutBase.ShowAt(senderElement);
+        }
+
+        private async void ProfileButton_OnClickButton_Click(object sender, RoutedEventArgs e)
+        {
+            var frameworkElement = e.OriginalSource as FrameworkElement;
+            if (frameworkElement != null)
+            {
+                ITweet tweet = frameworkElement.DataContext as ITweet;
+                if (tweet != null)
+                {
+                    IUser userClicked = tweet.CreatedBy;
+
+                    this.Frame.Navigate(typeof(Profile), userClicked);
+
+                }
+            }
+            else
+            {
+                await new MessageDialog("Error!").ShowAsync();
+
+            }
         }
     }
 }

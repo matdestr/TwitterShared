@@ -42,13 +42,7 @@ namespace TwitterUWP
             if (user != null) GetTweets(user.Id);
         }
 
-        private void UIElement_OnRightTapped(object sender, RightTappedRoutedEventArgs e)
-        {
-            FrameworkElement senderElement = sender as FrameworkElement;
-            FlyoutBase flyoutBase = FlyoutBase.GetAttachedFlyout(senderElement);
-            flyoutBase.ShowAt(senderElement);
-        }
-
+      
         private async void RetweetButton_Click(object sender, RoutedEventArgs e)
         {
             var frameworkElement = e.OriginalSource as FrameworkElement;
@@ -148,6 +142,13 @@ namespace TwitterUWP
         private void GoToHomeAppBarToggleButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof (TimelinePage));
+        }
+
+        private void Grid_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            FrameworkElement senderElement = sender as FrameworkElement;
+            FlyoutBase flyoutBase = FlyoutBase.GetAttachedFlyout(senderElement);
+            flyoutBase.ShowAt(senderElement);
         }
     }
 }

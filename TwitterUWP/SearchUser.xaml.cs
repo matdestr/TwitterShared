@@ -110,17 +110,31 @@ namespace TwitterUWP
             }
         }
 
-        private void UIElement_OnRightTapped(object sender, RightTappedRoutedEventArgs e)
+       
+
+        private void UIElement_OnTapped(object sender, TappedRoutedEventArgs e)
         {
             FrameworkElement senderElement = sender as FrameworkElement;
             FlyoutBase flyoutBase = FlyoutBase.GetAttachedFlyout(senderElement);
             flyoutBase.ShowAt(senderElement);
         }
 
-        private void SearchUserResultTweets_OnItemClick(object sender, ItemClickEventArgs e)
+        private async void ProfileButton_OnClickButton_OnClickButton_Click(object sender, RoutedEventArgs e)
         {
-            IUser userClicked = e.ClickedItem as IUser;
-            this.Frame.Navigate(typeof (Profile), userClicked);
+            var frameworkElement = e.OriginalSource as FrameworkElement;
+            if (frameworkElement != null)
+            {
+                IUser user = frameworkElement.DataContext as IUser;
+                if (user != null)
+                {
+                    this.Frame.Navigate(typeof (Profile), user);
+                }
+            }
+            else
+            {
+                await new MessageDialog("Error!").ShowAsync();
+
+            }
         }
     }
 }

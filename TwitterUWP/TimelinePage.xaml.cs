@@ -31,6 +31,7 @@ namespace TwitterUWP
     {
         private ITimelineHelper timelineHelper = new TimelineHelper();
         private ITweetHelper tweetHelper = new TweetHelper();
+
         public TimelinePage()
         {
             this.InitializeComponent();
@@ -53,13 +54,7 @@ namespace TwitterUWP
             this.Frame.Navigate(typeof (Search));
         }
 
-        private void UIElement_OnRightTapped(object sender, RightTappedRoutedEventArgs e)
-        {
-            FrameworkElement senderElement = sender as FrameworkElement;
-            FlyoutBase flyoutBase = FlyoutBase.GetAttachedFlyout(senderElement);
-            flyoutBase.ShowAt(senderElement);
-        }
-
+      
         private async void RetweetButton_Click(object sender, RoutedEventArgs e)
         {
             var frameworkElement = e.OriginalSource as FrameworkElement;
@@ -169,11 +164,35 @@ namespace TwitterUWP
             this.Frame.Navigate(typeof (SearchUser));
         }
 
-        private void TimeLineTweets_OnItemClick_OnItemClick(object sender, ItemClickEventArgs e)
+        private async void ProfileButton_Click(object sender, RoutedEventArgs e)
         {
-            ITweet tweetClicked = e.ClickedItem as ITweet;
-            IUser userClicked = tweetClicked?.CreatedBy;
-            this.Frame.Navigate(typeof(Profile), userClicked);
+            var frameworkElement = e.OriginalSource as FrameworkElement;
+            if (frameworkElement != null)
+            {
+                ITweet tweet = frameworkElement.DataContext as ITweet;
+                if (tweet != null)
+                {
+                    IUser userClicked = tweet.CreatedBy;
+
+                    this.Frame.Navigate(typeof(Profile), userClicked);
+
+                }
+            }
+            else
+            {
+                await new MessageDialog("Error!").ShowAsync();
+
+            }
         }
+
+
+        private void Grid_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            FrameworkElement senderElement = sender as FrameworkElement;
+            FlyoutBase flyoutBase = FlyoutBase.GetAttachedFlyout(senderElement);
+            flyoutBase.ShowAt(senderElement);
+        }
+
     }
 }
+
