@@ -68,8 +68,15 @@ namespace TwitterUWP
                 ITweet tweet = frameworkElement.DataContext as ITweet;
                 if (tweet != null)
                 {
-                    tweetHelper.Retweet(tweet.Id);
-                    await new MessageDialog("Tweet is geretweet!").ShowAsync();
+                    if (tweet.CreatedBy.ScreenName != User.GetLoggedUser().ScreenName)
+                    {
+                        tweetHelper.Retweet(tweet.Id);
+                        await new MessageDialog("Tweet is geretweet!").ShowAsync();
+                    }
+                    else
+                    {
+                        await new MessageDialog("U kan uw eigen tweet niet retweeten!").ShowAsync();
+                    }
                 }
             }
             else

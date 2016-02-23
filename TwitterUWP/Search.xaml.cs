@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -12,6 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Tweetinvi;
 using Tweetinvi.Core.Interfaces;
 using XamarinTestShared.Tweet;
 
@@ -40,25 +42,70 @@ namespace TwitterUWP
             flyoutBase.ShowAt(senderElement);
         }
 
-        private void RetweetButton_Click(object sender, RoutedEventArgs e)
+        private async void RetweetButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            var frameworkElement = e.OriginalSource as FrameworkElement;
+            if (frameworkElement != null)
+            {
+                ITweet tweet = frameworkElement.DataContext as ITweet;
+                if (tweet != null)
+                {
+                    if (tweet.CreatedBy.ScreenName != User.GetLoggedUser().ScreenName)
+                    {
+                        tweetHelper.Retweet(tweet.Id);
+                        await new MessageDialog("Tweet is geretweet!").ShowAsync();
+                    }
+                    else
+                    {
+                        await new MessageDialog("U kan uw eigen tweet niet retweeten!").ShowAsync();
+                    }
+                }
+            }
+            else
+            {
+                await new MessageDialog("Error!").ShowAsync();
+
+            }
         }
 
-        private void FavouriteButton_Click(object sender, RoutedEventArgs e)
+        private async void FavouriteButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            var frameworkElement = e.OriginalSource as FrameworkElement;
+            if (frameworkElement != null)
+            {
+                ITweet tweet = frameworkElement.DataContext as ITweet;
+                if (tweet != null)
+                {
+                    tweetHelper.FavouriteTweet(tweet.Id);
+                    await new MessageDialog("Tweet is favourited!").ShowAsync();
+                }
+            }
+            else
+            {
+                await new MessageDialog("Error!").ShowAsync();
+
+            }
         }
 
-        private void ReplyButton_Click(object sender, RoutedEventArgs e)
+        private async void ReplyButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            var frameworkElement = e.OriginalSource as FrameworkElement;
+            if (frameworkElement != null)
+            {
+                ITweet tweet = frameworkElement.DataContext as ITweet;
+                if (tweet != null)
+                {
+                    this.Frame.Navigate(typeof(NewTweet), tweet);
+                    //await new MessageDialog("Reply Ok!").ShowAsync();
+                }
+            }
+            else
+            {
+                await new MessageDialog("Error!").ShowAsync();
+
+            }
         }
 
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
 
         private IEnumerable<ITweet> GetSearchResults()
         {
