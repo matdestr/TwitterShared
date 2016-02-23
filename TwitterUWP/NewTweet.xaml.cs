@@ -43,7 +43,6 @@ namespace TwitterUWP
             }
             else
             {
-                await new MessageDialog("Parameter niet ontvangen!").ShowAsync();
             }
         }
 
@@ -72,9 +71,25 @@ namespace TwitterUWP
 
                 var dialog = new MessageDialog("Tweet met tekst: " + tweetToPublish.Text + " is verzonden!");
                 await dialog.ShowAsync();
+                Frame.GoBack();
 
             }
 
+        }
+
+        private void GoToHomeAppBarToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof (TimelinePage));
+        }
+
+        private void SearchAppBarToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Search));
+        }
+
+        private void SearchUserAppbarToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(SearchUser));
         }
     }
 }

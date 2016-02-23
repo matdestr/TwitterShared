@@ -27,5 +27,19 @@ namespace XamarinTestShared.Timeline
             var userTimeline = loggedUser.GetUserTimeline();
             return userTimeline;
         }
+
+        public IEnumerable<ITweet> GetUserTimeline(string screenname)
+        {
+            var loggedUser = Tweetinvi.User.GetUserFromScreenName(screenname);
+            var userTimeline = loggedUser.GetUserTimeline();
+            return userTimeline;
+        }
+
+        public IEnumerable<ITweet> GetUserTimeline(long id)
+        {
+            var loggedUser = Tweetinvi.User.GetUserFromId(id);
+            var userTimeline = loggedUser.GetUserTimeline();
+            return userTimeline;
+        }
     }
 }

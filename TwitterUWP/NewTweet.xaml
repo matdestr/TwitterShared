@@ -11,4 +11,11 @@
         <AppBarButton x:Name="appBarButton" HorizontalAlignment="Left" Icon="Send" Label="Post Tweet" Margin="10,135,0,0" VerticalAlignment="Top" Click="Post_Tweet"/>
 
     </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarToggleButton Icon="Home" Label="Home" Click="GoToHomeAppBarToggleButton_Click" />
+            <AppBarToggleButton Icon="Find" Label="Search hashtags" Click="SearchAppBarToggleButton_Click" />
+            <AppBarToggleButton Icon="People" Label="Search users" Click="SearchUserAppbarToggleButton_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>

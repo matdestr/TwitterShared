@@ -19,7 +19,7 @@
             </Grid.RowDefinitions>
             <AutoSuggestBox x:Name="AutoSuggestBox" Grid.Row="0" PlaceholderText="Search for users" QueryIcon="Find" HorizontalAlignment="Stretch" QuerySubmitted="AutoSuggestBox_QuerySubmitted"></AutoSuggestBox>
 
-            <ListView Grid.Row="1" Name="SearchUserResultTweets" Background="White" IsRightTapEnabled="True" >
+            <ListView Grid.Row="1" Name="SearchUserResultTweets" Background="White" IsRightTapEnabled="True" IsItemClickEnabled="True" ItemClick="SearchUserResultTweets_OnItemClick" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid RightTapped="UIElement_OnRightTapped">

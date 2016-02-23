@@ -9,17 +9,16 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Pivot>
-            <PivotItem Header="User Timeline">
+            <PivotItem x:Name="PivotItemProfile"  Header="User Timeline">
                 <ListView Name="UserTimeLineTweets" Background="White" IsRightTapEnabled="True" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid RightTapped="UIElement_OnRightTapped">
                                 <FlyoutBase.AttachedFlyout>
-                                    <MenuFlyout>
+                                    <MenuFlyout x:Name="MenuFlyout">
                                         <MenuFlyoutItem x:Name="EditButton" Text="Retweet" Click="RetweetButton_Click"/>
                                         <MenuFlyoutItem x:Name="FavouriteButton" Text="Favourite" Click="FavouriteButton_Click"/>
                                         <MenuFlyoutItem x:Name="ReplyButton" Text="Reply" Click="ReplyButton_Click"/>
-                                        <MenuFlyoutItem x:Name="DeleteButton" Text="Delete" Click="DeleteButton_Click"/>
                                     </MenuFlyout>
                                 </FlyoutBase.AttachedFlyout>
                                 <StackPanel Orientation="Horizontal" Height="Auto" Margin="0,0,0,20">
@@ -38,6 +37,7 @@
     </Grid>
     <Page.BottomAppBar>
         <CommandBar>
+            <AppBarToggleButton Icon="Home" Label="Home" Click="GoToHomeAppBarToggleButton_Click" />
             <AppBarToggleButton Icon="Refresh" Label="Refresh" Click="Refresh" />
             <AppBarToggleButton Icon="Find" Label="Search hashtags" Click="SearchAppBarToggleButton_Click" />
             <AppBarToggleButton Icon="People" Label="Search users" Click="SearchUserAppbarToggleButton_Click"/>

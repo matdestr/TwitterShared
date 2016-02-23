@@ -9,7 +9,7 @@
     <Grid x:Name="TimelineGrid" Background="White">
         <Pivot>
             <PivotItem Header="Home Timeline">
-                <ListView Name="TimeLineTweets" Background="White" IsRightTapEnabled="True" >
+                <ListView Name="TimeLineTweets" Background="White" IsRightTapEnabled="True" IsItemClickEnabled="True" ItemClick="TimeLineTweets_OnItemClick_OnItemClick" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid RightTapped="UIElement_OnRightTapped">

@@ -11,6 +11,9 @@ namespace XamarinTestShared.Timeline
 
         IEnumerable<IMention> GetMentionsTimeline();
         IEnumerable<ITweet> GetUserTimeline();
+        IEnumerable<ITweet> GetUserTimeline(string screenname);
+        IEnumerable<ITweet> GetUserTimeline(long id);
+
 
     }
 }

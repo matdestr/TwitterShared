@@ -142,5 +142,12 @@ namespace TwitterUWP
         {
             this.Frame.Navigate(typeof(SearchUser));
         }
+
+        private void SearchResultTweets_OnItemClick(object sender, ItemClickEventArgs e)
+        {
+            ITweet tweetClicked = e.ClickedItem as ITweet;
+            IUser userClicked = tweetClicked?.CreatedBy;
+            this.Frame.Navigate(typeof(Profile), userClicked);
+        }
     }
 }

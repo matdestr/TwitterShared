@@ -116,5 +116,11 @@ namespace TwitterUWP
             FlyoutBase flyoutBase = FlyoutBase.GetAttachedFlyout(senderElement);
             flyoutBase.ShowAt(senderElement);
         }
+
+        private void SearchUserResultTweets_OnItemClick(object sender, ItemClickEventArgs e)
+        {
+            IUser userClicked = e.ClickedItem as IUser;
+            this.Frame.Navigate(typeof (Profile), userClicked);
+        }
     }
 }
