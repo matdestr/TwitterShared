@@ -21,7 +21,7 @@
                                         <MenuFlyoutItem x:Name="DeleteButton" Text="Delete" Click="DeleteButton_Click"/>
                                     </MenuFlyout>
                                 </FlyoutBase.AttachedFlyout>
-                                <StackPanel Orientation="Horizontal" Height="Auto">
+                                <StackPanel Orientation="Horizontal" Height="Auto" Margin="0,0,0,20">
                                     <Image Source="{Binding CreatedBy.ProfileImageUrl}" Height="73" Width="73" VerticalAlignment="Top" Margin="5,10,8,0"/>
                                     <StackPanel Width="auto">
                                         <TextBlock Text="{Binding CreatedBy.Name}" Foreground="#222" FontSize="24" FontWeight="SemiBold" />
@@ -38,8 +38,9 @@
     <Page.BottomAppBar>
         <CommandBar>
             <AppBarToggleButton Icon="Refresh" Label="Refresh" Click="Refresh" />
-            <AppBarToggleButton Icon="Add" Label="New Tweet" Click="NewTweetAppBarToggleButton_Click" />
             <AppBarToggleButton Icon="Find" Label="Search hashtags" Click="SearchAppBarToggleButton_Click" />
+            <AppBarToggleButton Icon="People" Label="Search users" Click="SearchUserAppbarToggleButton_Click"/>
+            <AppBarToggleButton Icon="Add" Label="New Tweet" Click="NewTweetAppBarToggleButton_Click" />
         </CommandBar>
     </Page.BottomAppBar>
 

@@ -137,5 +137,10 @@ namespace TwitterUWP
         {
             this.Frame.Navigate(typeof (TimelinePage));
         }
+
+        private void SearchAppBarToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(SearchUser));
+        }
     }
 }

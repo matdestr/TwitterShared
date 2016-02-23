@@ -8,6 +8,7 @@ using Tweetinvi;
 using XamarinTestShared;
 using XamarinTestShared.Authentication;
 using XamarinTestShared.Tweet;
+using XamarinTestShared.User;
 
 namespace ConsoleApplication1
 {
@@ -15,13 +16,12 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Start testing");
-
-#region test with TestClass
-            //MyClass.Auth();
-
             IAuthHelper authHelper = new AuthHelper();
             ITweetHelper tweetHelper = new TweetHelper();
+            IUserHelper userHelper = new UserHelper();
+
+            Console.WriteLine("Start testing");
+
             authHelper.Authenticate();
             //var tweetJelle = MyClass.publishTweet();
 
@@ -57,13 +57,20 @@ namespace ConsoleApplication1
                 Console.WriteLine(tweet.IsTweetPublished);
                 Console.WriteLine(tweet.CreatedBy.ProfileImageUrl);
             }*/
-#endregion
 
-            var searchedTweets = tweetHelper.Search("Test search KDG");
+
+            /*var searchedTweets = tweetHelper.Search("Test search KDG");
             foreach (var searchedTweet in searchedTweets)
             {
                 Console.WriteLine(searchedTweet.CreatedBy.Name);
                 Console.WriteLine(searchedTweet.Text + "\n");
+            }*/
+
+            var users = userHelper.SearchUser("acidshards");
+            foreach (var user in users)
+            {
+                Console.WriteLine(user.Name);
+                Console.WriteLine(user.ScreenName + "\n");
             }
             Console.WriteLine("End testing");
             Console.ReadLine();

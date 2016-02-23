@@ -8,6 +8,40 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <Pivot>
+            <PivotItem Header="User Timeline">
+                <ListView Name="UserTimeLineTweets" Background="White" IsRightTapEnabled="True" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid RightTapped="UIElement_OnRightTapped">
+                                <FlyoutBase.AttachedFlyout>
+                                    <MenuFlyout>
+                                        <MenuFlyoutItem x:Name="EditButton" Text="Retweet" Click="RetweetButton_Click"/>
+                                        <MenuFlyoutItem x:Name="FavouriteButton" Text="Favourite" Click="FavouriteButton_Click"/>
+                                        <MenuFlyoutItem x:Name="ReplyButton" Text="Reply" Click="ReplyButton_Click"/>
+                                        <MenuFlyoutItem x:Name="DeleteButton" Text="Delete" Click="DeleteButton_Click"/>
+                                    </MenuFlyout>
+                                </FlyoutBase.AttachedFlyout>
+                                <StackPanel Orientation="Horizontal" Height="Auto" Margin="0,0,0,20">
+                                    <Image Source="{Binding CreatedBy.ProfileImageUrl}" Height="73" Width="73" VerticalAlignment="Top" Margin="5,10,8,0"/>
+                                    <StackPanel Width="auto">
+                                        <TextBlock Text="{Binding CreatedBy.Name}" Foreground="#222" FontSize="24" FontWeight="SemiBold" />
+                                        <TextBlock Text="{Binding Text}" Foreground="#555" TextWrapping="Wrap" FontSize="20" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </PivotItem>
+        </Pivot>
     </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarToggleButton Icon="Refresh" Label="Refresh" Click="Refresh" />
+            <AppBarToggleButton Icon="Find" Label="Search hashtags" Click="SearchAppBarToggleButton_Click" />
+            <AppBarToggleButton Icon="People" Label="Search users" Click="SearchUserAppbarToggleButton_Click"/>
+            <AppBarToggleButton Icon="Add" Label="New Tweet" Click="NewTweetAppBarToggleButton_Click" />
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>

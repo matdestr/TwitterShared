@@ -6,8 +6,48 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    
+    <Page.Resources>
+        <local:StringFormatConverter x:Key="StringFormatConverter" StringFormat="@{0}"/>
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <AutoSuggestBox x:Name="AutoSuggestBox" Grid.Row="0" PlaceholderText="Search for users" QueryIcon="Find" HorizontalAlignment="Stretch" QuerySubmitted="AutoSuggestBox_QuerySubmitted"></AutoSuggestBox>
 
+            <ListView Grid.Row="1" Name="SearchUserResultTweets" Background="White" IsRightTapEnabled="True" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RightTapped="UIElement_OnRightTapped">
+                            <FlyoutBase.AttachedFlyout>
+                                <MenuFlyout>
+                                    <MenuFlyoutItem x:Name="FollowButton" Text="Follow" Click="FollowButton_OnClickButton_Click"/>
+                                    <MenuFlyoutItem x:Name="BlockButton" Text="Block" Click="BlockButton_OnClickButton_Click"/>
+                                </MenuFlyout>
+                            </FlyoutBase.AttachedFlyout>
+                            <StackPanel Orientation="Horizontal" Height="100">
+                                <Image Source="{Binding ProfileImageUrl}" Height="73" Width="73" VerticalAlignment="Top" Margin="5,10,8,0"/>
+                                <StackPanel Width="auto">
+                                    <TextBlock Text="{Binding Name}" Foreground="#222" FontSize="24" FontWeight="SemiBold" />
+                                    <TextBlock Text="{Binding ScreenName, Converter={StaticResource StringFormatConverter}}" Foreground="#555" TextWrapping="Wrap" FontSize="20" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarToggleButton Icon="Home" Label="Home" Click="GoToHomeAppBarToggleButton_Click" />
+            <AppBarToggleButton Icon="Refresh" Label="Refresh" Click="Refresh" />
+            <AppBarToggleButton Icon="Find" Label="Search hashtags" Click="SearchAppBarToggleButton_Click" />
+            <AppBarToggleButton Icon="Add" Label="New Tweet" Click="NewTweetAppBarToggleButton_Click" />
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>

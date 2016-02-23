@@ -25,5 +25,17 @@ namespace XamarinTestShared.User
             var users = Search.SearchUsers(text);
             return users;
         }
+
+        public bool BlockUser(long userId)
+        {
+            var user = Tweetinvi.User.BlockUser(userId);
+            return user;
+        }
+
+        public bool FollowUser(long userId)
+        {
+            var user = Tweetinvi.User.FollowUser(userId);
+            return user;
+        }
     }
 }

@@ -11,5 +11,7 @@ namespace XamarinTestShared.User
         IUser GetUserById(long userId);
         IUser GetUserByScreenName(string screenName);
         IEnumerable<IUser> SearchUser(string text);
+        bool BlockUser(long userId);
+        bool FollowUser(long userId);
     }
 }

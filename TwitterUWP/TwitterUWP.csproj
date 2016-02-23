@@ -123,6 +123,7 @@
     <Compile Include="SearchUser.xaml.cs">
       <DependentUpon>SearchUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StringFormatConverter.cs" />
     <Compile Include="TimelinePage.xaml.cs">
       <DependentUpon>TimelinePage.xaml</DependentUpon>
     </Compile>

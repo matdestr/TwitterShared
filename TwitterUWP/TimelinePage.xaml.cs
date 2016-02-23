@@ -163,5 +163,10 @@ namespace TwitterUWP
 
             }
         }
+
+        private void SearchUserAppbarToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof (SearchUser));
+        }
     }
 }
